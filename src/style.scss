@@ -1,0 +1,66 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+
+.faq-wrapper {
+	background: #F2F2F2;
+	max-width: 100% !important;
+	padding: 50px 25px;
+	margin: 75px 0;
+}
+
+.faq-wrapper h2 {
+	text-align: center;
+}
+
+.faq-item {
+	background-color: #FFF;
+	color: #000;
+	padding: 10px 25px;
+	margin-bottom: 10px;
+	position: relative;
+	border: 1px solid #DADADA;
+	max-width: var(--wp--style--global--content-size);
+	margin-left: auto;
+	margin-right: auto;
+	cursor: pointer;
+}
+
+.faq-item:hover {
+	background-color: #fafafa;
+}
+
+.delete-faq {
+	position: absolute;
+	left: -50px;
+  	top: 50%;
+  	transform: translateY(-50%);
+}
+
+.faq-wrapper.noSpaceBefore .panel {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+}
+
+.faq-wrapper.noSpaceBefore h4 {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+}
+
+.faq-wrapper.noSpaceBefore h4::after {
+	content: url('./chevron.svg');
+	display: flex;
+	transition: all 0.2s;
+}
+
+.faq-wrapper.noSpaceBefore .active h4::after {
+	transform: rotate(180deg)
+}
+
+
