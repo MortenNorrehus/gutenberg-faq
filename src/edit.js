@@ -11,69 +11,41 @@ export default function Edit(props) {
 
 	const [arr, setArr] = useState(props.attributes.content)
 
-
-	useEffect(() => {
-		console.log('rendered')
-
-		/*	const delayDebounceFn = setTimeout(() => {
-				console.log('now')
-				wp.data.dispatch('core/editor').savePost();
-			}, 500)
-	
-			return () => clearTimeout(delayDebounceFn)*/
-
-	}, [arr])
-
 	const updateHeadline = (e, index) => {
-
-		const content1 = props.attributes.content;
-
-		const updated = { ...content1[index], headline: e }
-
-		const list = [...content1];
-
+		const content = props.attributes.content;
+		const updated = { ...content[index], headline: e }
+		const list = [...content];
 		list[index] = updated;
-
 		setArr(list);
 
 		props.setAttributes({ content: list });
-
-
 	}
 
 
 
 	const updateContent = (e, index) => {
-
-		const content1 = props.attributes.content;
-
-		const updated = { ...content1[index], content: e }
-
-		const list = [...content1];
-
+		const content = props.attributes.content;
+		const updated = { ...content[index], content: e }
+		const list = [...content];
 		list[index] = updated;
-
 		setArr(list);
 
 		props.setAttributes({ content: list });
-
 	}
 
 
 	const addFaq = () => {
 		const array = props.attributes.content;
-
-		const test = {
+		const emptyFAQ = {
 			headline: '',
 			content: ''
 		}
 
-		props.setAttributes({ content: [...array, { ...test }] });
+		props.setAttributes({ content: [...array, { ...emptyFAQ }] });
 	}
 
 
 	const deleteFaq = (i) => {
-
 		setArr(arr => {
 			return arr.filter((item, index) => index !== i)
 		})
@@ -110,7 +82,7 @@ export default function Edit(props) {
 				</>
 			}
 
-			{props.attributes.content.map((item, index) => {
+			{props.attributes.content.map((_item, index) => {
 				return (
 					<div className="faq-item">
 						<Button className="delete-faq" onClick={() => deleteFaq(index)}><img src={deleteIcon} /></Button>
@@ -128,8 +100,6 @@ export default function Edit(props) {
 							placeholder='Content'
 						>
 						</RichText>
-
-
 					</div>
 				)
 			})}
